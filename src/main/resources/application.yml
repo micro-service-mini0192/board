@@ -1,16 +1,19 @@
+JWTKey: test
+
 spring:
   application.name: board
-  profiles.active: dev
+  profiles:
+    active: dev
 
-eureka.client:
-  registerWithEureka: true
-  fetchRegistry: true
-  serviceUrl:
-    defaultZone: http://eureka:8761/eureka
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 
 server:
   port: 8081
-
+  forward-headers-strategy: FRAMEWORK
 
 resilience4j:
   retry:

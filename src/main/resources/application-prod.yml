@@ -1,0 +1,10 @@
+spring:
+  redis:
+    host: redis
+    port: 6379
+
+eureka.client:
+  registerWithEureka: true
+  fetchRegistry: true
+  serviceUrl:
+    defaultZone: http://eureka:8761/eureka
