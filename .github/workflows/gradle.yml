@@ -60,5 +60,5 @@ jobs:
             sudo docker pull ${{secrets.DOCKERHUB_USERNAME}}/micro-board
             sudo docker stop board
             sudo docker container rm board
-            sudo docker run -dit -p 8080:8080 --name board ${{secrets.DOCKERHUB_USERNAME}}/micro-board
+            sudo docker run -dit -p 8081:8080 --name board --link eureka:eureka ${{secrets.DOCKERHUB_USERNAME}}/micro-board
             sudo docker image prune -f
