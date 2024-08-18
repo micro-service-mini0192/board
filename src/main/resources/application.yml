@@ -1,12 +1,13 @@
 spring:
   application.name: board
   profiles.active: dev
+  config.import: optional:configserver:http://admin:1234@localhost:9000
 
 eureka.client:
-  registerWithEureka: true
-  fetchRegistry: true
+  registerWithEureka: true #유레카 서버에 등록할지 여부
+  fetchRegistry: true #유레카 서버의 정보를 가져올지 여부
   serviceUrl:
-    defaultZone: http://34.22.64.139:8761/eureka
+    defaultZone: http://34.22.64.139:8761/eureka #유레카 서버 주소
 
 server:
   port: 8081
