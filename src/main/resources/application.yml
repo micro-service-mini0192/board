@@ -10,7 +10,7 @@ eureka.client:
     defaultZone: http://eureka:8761/eureka
 
 server:
-  port: 8080
+  port: 8081
 
 
 resilience4j:
