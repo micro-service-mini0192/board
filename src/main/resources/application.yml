@@ -1,0 +1,62 @@
+spring:
+  application.name: board
+  profiles.active: dev
+
+eureka.client:
+  registerWithEureka: true
+  fetchRegistry: true
+  serviceUrl:
+    defaultZone: http://34.22.64.139:8761/eureka
+
+server:
+  port: 8081
+
+
+resilience4j:
+  retry:
+    instances:
+      retry:
+        baseConfig: default
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration: 3000ms
+
+  circuitbreaker:
+    instances:
+      fail:
+        baseConfig: default
+
+    configs:
+      default:
+        sliding-window-type: count_based
+        slidingWindowSize: 5
+
+        failure-rate-threshold: 10
+        minimum-number-of-calls: 5
+
+        slow-call-rate-threshold: 10
+        slow-call-duration-threshold: 3000ms
+
+        permitted-number-of-calls-in-half-open-state: 10
+        max-wait-duration-in-half-open-state: 0
+
+        wait-duration-in-open-state: 10000ms
+        automatic-transition-from-open-to-half-open-enabled: true
+        register-health-indicator: true
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+  endpoint:
+    health:
+      show-details: always
+
+
+  health:
+    circuitbreakers:
+      enabled: true
