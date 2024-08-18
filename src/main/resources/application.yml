@@ -1,7 +1,6 @@
 spring:
   application.name: board
   profiles.active: dev
-  config.import: optional:configserver:http://admin:1234@localhost:9000
 
 eureka.client:
   registerWithEureka: true
