@@ -10,7 +10,7 @@ eureka.client:
     defaultZone: http://34.22.64.139:8761/eureka #유레카 서버 주소
 
 server:
-  port: 8081
+  port: 8080
 
 
 resilience4j:
