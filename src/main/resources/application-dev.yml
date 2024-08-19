@@ -1,4 +1,9 @@
 spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: board
   redis:
     host: localhost
     port: 6379
@@ -7,4 +12,4 @@ eureka.client:
   registerWithEureka: true
   fetchRegistry: true
   serviceUrl:
-    defaultZone: http://${url}:8761/eureka
+    defaultZone: http://localhost:8761/eureka

@@ -1,5 +1,6 @@
 package com.example.demo.security.member;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -9,15 +10,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@Getter
 @RequiredArgsConstructor
 public class MemberDetails implements UserDetails {
 
     private final Member member;
-
-    public Long getId() {
-        return member.getId();
-    }
-    public String getNickname() { return member.getNickname(); }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

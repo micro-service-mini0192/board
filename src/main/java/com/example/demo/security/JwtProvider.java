@@ -15,7 +15,9 @@ public class JwtProvider {
     public String SECRET;
 
     public final String TOKEN_PREFIX = "Bearer ";
+
     public final String JWT_HEADER_STRING = "Authorization";
+    public final String REFRESH_HEADER_STRING = "Refresh";
 
     public Member decodeToken(String token, String key) {
         DecodedJWT decodedJWT = JWT.require(Algorithm.HMAC512(key))
@@ -23,8 +25,15 @@ public class JwtProvider {
                 .verify(token);
 
         Long id = decodedJWT.getClaim("id").asLong();
-        String username = decodedJWT.getClaim("username").toString().replace("\"", "");;
-        String nickname = decodedJWT.getClaim("nickname").toString().replace("\"", "");;
+
+        String username = decodedJWT.getClaim("username").toString();
+        username = username.replace("\"", "");
+        username = username.replace("\\", "");
+
+        String nickname = decodedJWT.getClaim("nickname").toString();
+        nickname = nickname.replace("\"", "");
+        nickname = nickname.replace("\\", "");
+
         List<String> role = decodedJWT.getClaim("role").asList(String.class);
 
         return Member.builder()
